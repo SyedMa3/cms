@@ -1,0 +1,18 @@
+.carous {
+  margin: auto;
+  height: 70vh;
+  width: auto;
+  background-color: grey;
+}
+
+.imm {
+  margin: auto;
+  margin-top: 50px;
+  height: 50vh;
+  /* width: 50vw; */
+}
+
+.listg {
+  margin: auto;
+  width: 100vh;
+}
