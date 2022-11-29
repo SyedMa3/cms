@@ -1,0 +1,60 @@
+.Event__Page
+{
+    min-width: 100vw;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:baseline;
+    gap: 4rem;
+    background: #0D0E12;
+}
+
+.Event__list
+{
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.Event__list button
+{
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #202328;
+    color: #E1E6F0;
+}
+
+.Event__Content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px;
+    border-radius: 15px;
+    color: #E1E6F0;
+    text-align: center;
+    padding: 20px;
+    background-color: #202328;
+    min-height: 350px;
+}
+
+.Event__Content p
+{
+    max-width: 30vw;
+}
+
+.Event__date
+{
+    color: #646D7D;
+}
+
+.Event__details
+{
+    color: #B0B5C0;
+}

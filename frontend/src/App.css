@@ -16,3 +16,8 @@
   margin: auto;
   width: 100vh;
 }
+
+.App
+{
+  overflow-x: hidden;
+}
