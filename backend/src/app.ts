@@ -8,6 +8,7 @@ const app: Express = express()
 const PORT: number = 4000
 
 app.use(cors())
+app.use(express.json())
 app.use(eventRoutes)
 
 const uri: string = `mongodb://127.0.0.1:27017/${process.env.MONGO_DB}`
