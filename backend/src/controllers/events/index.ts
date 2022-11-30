@@ -18,8 +18,7 @@ const addEvent =async (req : Request, res: Response): Promise<void> => {
 
         const event: IEvent = new Event({
             name: body.name,
-            description: body.description,
-            date: new Date()
+            description: body.description
         })
 
         const newEvent: IEvent = await event.save()

@@ -12,11 +12,6 @@ const eventSchema: Schema = new Schema(
             type: String,
             required: true
         },
-
-        date: {
-            type: Date,
-            required: true
-        }
     },
     { timestamps: true}
 )
