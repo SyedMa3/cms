@@ -14,11 +14,12 @@ const getEvents = async (req: Request, res: Response): Promise<void> => {
 const addEvent =async (req : Request, res: Response): Promise<void> => {
     try {
         console.log(req.body)
-        const body = req.body as Pick<IEvent, "name" | "description">
+        const body = req.body as Pick<IEvent, "name" | "description" | "date">
 
         const event: IEvent = new Event({
             name: body.name,
-            description: body.description
+            description: body.description,
+            date: body.date
         })
 
         const newEvent: IEvent = await event.save()
