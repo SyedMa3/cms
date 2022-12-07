@@ -11,7 +11,7 @@ const getEvents = async (req: Request, res: Response): Promise<void> => {
     }   
 }
 
-const addEvent =async (req : Request, res: Response): Promise<void> => {
+const addEvent = async (req : Request, res: Response): Promise<void> => {
     try {
         console.log(req.body)
         const body = req.body as Pick<IEvent, "name" | "description" | "date">
@@ -31,4 +31,17 @@ const addEvent =async (req : Request, res: Response): Promise<void> => {
     
 }
 
-export { getEvents, addEvent }
+const removeEvent = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const event : IEvent | null = await Event.findByIdAndRemove(
+            req.params.id
+        )
+        res.status(200).json({
+            message: "Event deleted"
+        })
+    } catch(error) {
+        throw error
+    }
+}
+
+export { getEvents, addEvent, removeEvent}
