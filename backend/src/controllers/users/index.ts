@@ -23,7 +23,7 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
                 user_id: user._id,
                 email: body.email
             },
-            "ss",
+            process.env.TOKEN_KEY!,
             {
                 expiresIn: "1h"
             }
