@@ -1,5 +1,6 @@
 {
     "env": {
-        "MONGO_DB": "cms-db"
+        "MONGO_DB": "cms-db",
+        "MONGO_URI": "mongodb://127.0.0.1:27017/cms-db"
     }
 }

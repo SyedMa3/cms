@@ -1,10 +1,8 @@
-import { Router } from "express";
-import { addEvent, getEvents } from "../controllers/events/index"
+import { Router } from 'express'
+import { eventRouter } from './events'
+import { userRouter } from './users'
 
-const router: Router = Router()
+export const router: Router = Router()
 
-router.get("/events", getEvents)
-
-router.post("/events", addEvent)
-
-export default router
+router.use('/events', eventRouter)
+router.use('/users', userRouter)
