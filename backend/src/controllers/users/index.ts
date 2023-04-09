@@ -1,5 +1,5 @@
-import { type Request, type Response } from 'express'
-import { type IUser } from '../../types/user'
+import type { NextFunction, Request, Response } from 'express'
+import type { IUser } from '../../types/user'
 import User from '../../models/user'
 import bcrypt from 'bcrypt'
 
@@ -15,23 +15,53 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
       password: hashedPassword
     })
 
-    const newUser: IUser = await user.save()
+    await user.save()
+      .catch((err) => {
+        console.log('err', err)
+      })
+      .then(() => {
+        console.log('user created', body.email)
+      })
 
-    // const token = jwt.sign(
-    //     {
-    //         user_id: user._id,
-    //         email: body.email
-    //     },
-    //     process.env.TOKEN_KEY!,
-    //     {
-    //         expiresIn: "1h"
-    //     }
-    // )
-    res.status(201).json({ newUser })
+    res.send('registered')
   } catch (error) {
     console.log(error)
     throw error
   }
 }
 
-export { registerUser }
+const isAuth = (req: Request, res: Response, next: NextFunction): void => {
+  if (req.isAuthenticated()) {
+    next()
+  } else {
+    res.redirect('/login')
+  }
+}
+
+async function isValid (password: string, hash: string): Promise<boolean> {
+  const result = await bcrypt.compare(password, hash)
+
+  console.log('here')
+
+  return result
+}
+
+const verifyCallback = async (email: string, password: string, done: any): Promise<void> => {
+  User.findOne({ email })
+    .then(async (user) => {
+      console.log('lmao')
+      const isValidPassword = await isValid(password, user?.password ?? '')
+
+      if (isValidPassword) {
+        return done(null, user)
+      } else {
+        console.log('yes')
+        return done(null, false)
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+export { registerUser, isAuth, verifyCallback }
