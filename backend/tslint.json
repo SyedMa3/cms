@@ -1,6 +1,11 @@
 {
   "defaultSeverity": "error",
   "extends": [
-    "tslint:recommended"
-  ]
+    "tslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "other-configuration-that-enables-formatting-rules",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"]
 }
