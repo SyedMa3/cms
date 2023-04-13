@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import { Types, model, Schema } from 'mongoose'
 import { type IEvent } from './../types/event'
 
 const eventSchema: Schema = new Schema(
@@ -10,6 +10,12 @@ const eventSchema: Schema = new Schema(
 
     description: {
       type: String,
+      required: true
+    },
+
+    club: {
+      type: Types.ObjectId,
+      ref: 'Club',
       required: true
     },
 
